@@ -1,0 +1,79 @@
+version: "3"
+services: 
+    chat-service:
+      # image: cc_chat_v1
+      build: ./cc_chat_v1
+      restart: on-failure
+      ports: 
+        - "80:3000"
+    logindb:
+      image: mongo:latest
+      container_name: logindb
+      volumes:
+        - logindb:/data/db
+    logindb-seed:
+      build: ./login_db-seed
+      volumes:
+        - logindb:/data/db
+    mongo-express:
+      image: mongo-express:latest
+      environment:
+        - ME_CONFIG_MONGODB_SERVER=logindb
+        - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+        - ME_CONFIG_MONGODB_AUTH_USERNAME=${MONGO_ROOT_USER}
+        - ME_CONFIG_MONGODB_AUTH_PASSWORD=${MONGO_ROOT_PASSWORD}
+        - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME}
+        - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD}
+      env_file: 
+        - .env
+      restart: on-failure
+      links: 
+        - logindb
+      ports:
+        - "8081:8081"
+
+volumes:
+  logindb:
+
+
+
+
+
+
+# version: "3"
+# services:
+#   chat-service:
+#     build: ./cc_chat_v1
+#     volumes:
+#       - ./cc_chat_v1:/root/
+#     ports:
+#       - 80:3000
+
+#   mongodb_service:
+#     build: ./mongo
+#     volumes: 
+#       - ./db:/data/db
+#     ports:
+#       - 27018:27017
+
+# version: "3"
+# services: 
+# 	app:
+# 	  build: ./cc_chat_v1
+# 		...
+# 		networks:
+# 			- backend-network
+# 			- frontend-network
+#     db:
+#       image: mongo:latest
+#       ...
+#       networks:
+# 			- backend-network
+# 	web:
+# 		build: ./web
+# 		networks:
+#       - frontend-network
+
+# networks:
+#   backend-network:
+#   frontend-network:

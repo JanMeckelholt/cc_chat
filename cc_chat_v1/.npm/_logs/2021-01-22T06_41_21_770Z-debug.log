@@ -1,0 +1,38 @@
+0 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+1 info using npm@7.3.0
+2 info using node@v15.5.0
+3 timing config:load:defaults Completed in 2ms
+4 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 0ms
+5 timing config:load:builtin Completed in 0ms
+6 timing config:load:cli Completed in 2ms
+7 timing config:load:env Completed in 0ms
+8 timing config:load:project Completed in 0ms
+9 timing config:load:file:/root/.npmrc Completed in 0ms
+10 timing config:load:user Completed in 0ms
+11 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+12 timing config:load:global Completed in 0ms
+13 timing config:load:cafile Completed in 1ms
+14 timing config:load:validate Completed in 0ms
+15 timing config:load:setUserAgent Completed in 0ms
+16 timing config:load:setEnvs Completed in 1ms
+17 timing config:load Completed in 6ms
+18 verbose npm-session e3fb1af2c8298523
+19 timing npm:load Completed in 12ms
+20 timing command:run-script Completed in 542ms
+21 timing command:start Completed in 544ms
+22 verbose stack Error: command failed
+22 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/index.js:64:27)
+22 verbose stack     at ChildProcess.emit (node:events:376:20)
+22 verbose stack     at maybeClose (node:internal/child_process:1063:16)
+22 verbose stack     at Process.ChildProcess._handle.onexit (node:internal/child_process:295:5)
+23 verbose pkgid socket.io-chat@0.0.0
+24 verbose cwd /root
+25 verbose Linux 5.4.0-64-generic
+26 verbose argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+27 verbose node v15.5.0
+28 verbose npm  v7.3.0
+29 error code 1
+30 error path /root
+31 error command failed
+32 error command sh -c node index.js
+33 verbose exit 1

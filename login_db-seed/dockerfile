@@ -1,0 +1,4 @@
+FROM mongo
+
+COPY init.json /init.json
+CMD mongoimport --host logindb --db logindb --collection documents --drop --type json --file /init.json --jsonArray
