@@ -1,20 +1,27 @@
 version: "3"
 services: 
     chat-service:
-      # image: cc_chat_v1
       build: ./cc_chat_v1
       restart: on-failure
       ports: 
         - "80:3000"
+      networks: 
+        - app_logindata
     logindb:
       image: mongo:latest
       container_name: logindb
       volumes:
         - logindb:/data/db
+      networks: 
+        - mongo_maintenance
+        - app_logindata
+        - mongo_seed
     logindb-seed:
       build: ./login_db-seed
       volumes:
         - logindb:/data/db
+      networks: 
+        - mongo_seed
     mongo-express:
       image: mongo-express:latest
       environment:
@@ -31,49 +38,14 @@ services:
         - logindb
       ports:
         - "8081:8081"
+      networks: 
+        - mongo_maintenance
 
 volumes:
   logindb:
+networks: 
+  app_logindata:
+  mongo_maintenance:
+  mongo_seed:
 
 
-
-
-
-
-# version: "3"
-# services:
-#   chat-service:
-#     build: ./cc_chat_v1
-#     volumes:
-#       - ./cc_chat_v1:/root/
-#     ports:
-#       - 80:3000
-
-#   mongodb_service:
-#     build: ./mongo
-#     volumes: 
-#       - ./db:/data/db
-#     ports:
-#       - 27018:27017
-
-# version: "3"
-# services: 
-# 	app:
-# 	  build: ./cc_chat_v1
-# 		...
-# 		networks:
-# 			- backend-network
-# 			- frontend-network
-#     db:
-#       image: mongo:latest
-#       ...
-#       networks:
-# 			- backend-network
-# 	web:
-# 		build: ./web
-# 		networks:
-#       - frontend-network
-
-# networks:
-#   backend-network:
-#   frontend-network:
