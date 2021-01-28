@@ -3,7 +3,7 @@ const assert = require('assert');
 
 const url = 'mongodb://logindb:27017';
 const dbName = 'logindb';
-const collectionName = 'documents';
+const collectionName = 'loginCollection';
 
 
 function writeLogin2db(username) {

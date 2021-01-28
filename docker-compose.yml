@@ -34,8 +34,6 @@ services:
       env_file: 
         - .env
       restart: on-failure
-      links: 
-        - logindb
       ports:
         - "8081:8081"
       networks: 
