@@ -1,0 +1,154 @@
+Services:
+\begin{minipage}{0.93\linewidth}
+\begin{lstlisting}[style=docker-compose]
+version: "3"
+services: 
+    <@\textcolor{blue}{\textbf{chat-service:}}@>
+      build: ./cc_chat_v1
+      restart: on-failure
+      ports: 
+        - "80:3000"
+      networks: 
+        - app_logindata
+    <@\textcolor{blue}{\textbf{logindb:}}@>
+      image: mongo:latest
+      container_name: logindb
+      volumes:
+        - logindb:/data/db
+      networks: 
+        - mongo_maintenance
+        - app_logindata
+        - mongo_seed
+    <@\textcolor{blue}{\textbf{logindb-seed:}}@>
+      build: ./login_db-seed
+      networks: 
+        - mongo_seed
+   <@\textcolor{blue}{\textbf{ mongo-express:}}@>
+      image: mongo-express:latest
+      environment:
+        - ME_CONFIG_MONGODB_SERVER=logindb
+        - ME_CONFIG_BASICAUTH_USERNAME=
+            ${ME_CONFIG_BASICAUTH_USERNAME}
+        - ME_CONFIG_BASICAUTH_PASSWORD=
+            ${ME_CONFIG_BASICAUTH_PASSWORD}
+      env_file: 
+        - .env
+      restart: on-failure
+      ports:
+        - "8081:8081"
+      networks: 
+        - mongo_maintenance
+
+volumes:
+  logindb:
+networks: 
+  app_logindata:
+  mongo_maintenance:
+  mongo_seed:
+\end{lstlisting}
+\end{minipage}\\
+
+Volumes:
+\begin{minipage}{0.93\linewidth}
+\begin{lstlisting}[style=docker-compose]
+version: "3"
+services: 
+    chat-service:
+      build: ./cc_chat_v1
+      restart: on-failure
+      ports: 
+        - "80:3000"
+      networks: 
+        - app_logindata
+    logindb:
+      image: mongo:latest
+      container_name: logindb
+      volumes:
+        - <@\textcolor{blue}{\textbf{logindb:/data/db}}@>
+      networks: 
+        - mongo_maintenance
+        - app_logindata
+        - mongo_seed
+    logindb-seed:
+      build: ./login_db-seed
+      networks: 
+        - mongo_seed
+    mongo-express:
+      image: mongo-express:latest
+      environment:
+        - ME_CONFIG_MONGODB_SERVER=logindb
+        - ME_CONFIG_BASICAUTH_USERNAME=
+            ${ME_CONFIG_BASICAUTH_USERNAME}
+        - ME_CONFIG_BASICAUTH_PASSWORD=
+            ${ME_CONFIG_BASICAUTH_PASSWORD}
+      env_file: 
+        - .env
+      restart: on-failure
+      ports:
+        - "8081:8081"
+      networks: 
+        - mongo_maintenance
+
+volumes:
+  <@\textcolor{blue}{\textbf{logindb:}}@>
+networks: 
+  app_logindata:
+  mongo_maintenance:
+  mongo_seed:
+\end{lstlisting}
+\end{minipage}\\
+
+
+
+Networks:
+\begin{minipage}{0.93\linewidth}
+\begin{lstlisting}[style=docker-compose]
+version: "3"
+services: 
+    chat-service:
+      build: ./cc_chat_v1
+      restart: on-failure
+      ports: 
+        - "80:3000"
+      networks: 
+        - <@\textcolor{Green4}{\textbf{app\_logindata}}@>
+    logindb:
+      image: mongo:latest
+      container_name: logindb
+      volumes:
+        - logindb:/data/db
+      networks: 
+        - <@\textcolor{Green4}{\textbf{mongo\_maintenance}}@>
+        - <@\textcolor{blue}{\textbf{app\_logindata}}@>
+        - <@\textcolor{orange}{\textbf{mongo\_seed}}@>
+    logindb-seed:
+      build: ./login_db-seed
+      networks: 
+        - <@\textcolor{blue}{\textbf{mongo\_seed}}@>
+    mongo-express:
+      image: mongo-express:latest
+      environment:
+        - ME_CONFIG_MONGODB_SERVER=logindb
+        - ME_CONFIG_BASICAUTH_USERNAME=
+            ${ME_CONFIG_BASICAUTH_USERNAME}
+        - ME_CONFIG_BASICAUTH_PASSWORD=
+            ${ME_CONFIG_BASICAUTH_PASSWORD}
+      env_file: 
+        - .env
+      restart: on-failure
+      ports:
+        - "8081:8081"
+      networks: 
+        - <@\textcolor{orange}{\textbf{mongo\_maintenance}}@>
+
+volumes:
+  logindb:
+networks: 
+  <@\textcolor{Green4}{\textbf{app\_logindata:}}@>
+  <@\textcolor{blue}{\textbf{mongo\_maintenance:}}@>
+  <@\textcolor{orange}{\textbf{mongo\_seed:}}@>
+\end{lstlisting}
+\end{minipage}\\
+
+
+

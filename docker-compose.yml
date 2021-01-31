@@ -18,8 +18,6 @@ services:
         - mongo_maintenance
     logindb-seed:
       build: ./login_db-seed
-      volumes:
-        - logindb:/data/db
       networks: 
         - mongo_seed
     mongo-express:
