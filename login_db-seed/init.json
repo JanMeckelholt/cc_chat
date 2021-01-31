@@ -1,10 +1,10 @@
 [
-    {
-      "login": "Stan_Libuda",
-      "admin": true
-    },
-    {
-      "login": "Klaus_Fischer",
-      "admin": true
-    }
-  ]
+  {
+    "login": "Stan_Libuda",
+    "admin": true
+  },
+  {
+    "login": "Klaus_Fischer",
+    "admin": true
+  }
+]

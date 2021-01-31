@@ -13,9 +13,9 @@ services:
       volumes:
         - logindb:/data/db
       networks: 
-        - mongo_maintenance
         - app_logindata
         - mongo_seed
+        - mongo_maintenance
     logindb-seed:
       build: ./login_db-seed
       volumes:
@@ -40,7 +40,8 @@ volumes:
   logindb:
 networks: 
   app_logindata:
-  mongo_maintenance:
   mongo_seed:
+  mongo_maintenance:
+
 
 
