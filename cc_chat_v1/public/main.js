@@ -45,15 +45,6 @@ $(function() {
       socket.emit('username entered', username);
     }
 
-    // if (username){  
-    //   $loginPage.fadeOut();
-    //   $chatPage.show();
-    //   $loginPage.off('click');
-    //   $currentInput = $inputMessage.focus();
-
-    //   // Tell the server your username
-    //   socket.emit('add user', username);
-    // }
   }
 
   // Sends a chat message
@@ -254,8 +245,7 @@ $(function() {
     username = null;
 
     $errorLogin.text('Username is taken. Please try another one!');
-    //$document.getElementById("errorLogin").style.display = 'none';
-    //$document.getElementById("errorLogin3").style.display = 'none';
+
     
   });
 

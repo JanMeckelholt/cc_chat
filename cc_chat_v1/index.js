@@ -6,7 +6,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
 const mongoInit = require('./mongoInit');
-//const user;
+
 
 
 
@@ -14,9 +14,6 @@ const mongoInit = require('./mongoInit');
 server.listen(port, () => {
 
   console.log('Tach! Server listening at port %d', port);
-  //mongoInit.mConnect();
-  //mongoInit.write2db(res, "test");
-  //mongoInit.writeTest();
 
 });
 
@@ -40,7 +37,7 @@ io.on('connection', (socket) => {
   });
 
  
-  // when the client emits 'add user', this listens and executes
+  // when the client emits 'username entered', this listens and executes
   socket.on('username entered', (username) => {
     if (addedUser) return;
     mongoInit.callUserPromise(username)
