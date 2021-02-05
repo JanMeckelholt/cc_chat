@@ -118,9 +118,9 @@ services:
       volumes:
         - logindb:/data/db
       networks: 
-        - <@\textcolor{Green4}{\textbf{mongo\_maintenance}}@>
-        - <@\textcolor{blue}{\textbf{app\_logindata}}@>
-        - <@\textcolor{orange}{\textbf{mongo\_seed}}@>
+        - <@\textcolor{Green4}{\textbf{app\_logindata}}@>
+        - <@\textcolor{blue}{\textbf{mongo\_seed}}@>
+        - <@\textcolor{orange}{\textbf{mongo\_maintenance}}@>
     logindb-seed:
       build: ./login_db-seed
       networks: 
@@ -145,8 +145,8 @@ volumes:
   logindb:
 networks: 
   <@\textcolor{Green4}{\textbf{app\_logindata:}}@>
-  <@\textcolor{blue}{\textbf{mongo\_maintenance:}}@>
-  <@\textcolor{orange}{\textbf{mongo\_seed:}}@>
+  <@\textcolor{blue}{\textbf{mongo\_seed:}}@>
+  <@\textcolor{orange}{\textbf{mongo\_maintenance:}}@>
 \end{lstlisting}
 \end{minipage}\\
 

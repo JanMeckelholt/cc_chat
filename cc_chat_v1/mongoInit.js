@@ -79,7 +79,7 @@ const userPromise = (username) =>{
     
       const callEntryPromise = async () =>{
         const user = await(entryPromise());
-        console.log("CallEntrPromise (user): "+ user);
+        console.log("CallEntryPromise (user): "+ user);
         return user;
       };
       callEntryPromise().then(function(user){
@@ -93,18 +93,6 @@ const userPromise = (username) =>{
 async function callUserPromise(username) {
   const user = await(userPromise(username));
   return user;
-}
-
-
-const findEntry = async function(db, collection, query, callback){
-  db.collection(collection).findOne(query, function (err, doc){
-    if(err){
-      callback(err);
-    }
-    else {
-      callback(null, doc);
-    }
-  }); 
 }
 
 const upsertEntry = function(db, collection, entry, callback){
