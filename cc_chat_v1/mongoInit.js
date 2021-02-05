@@ -63,7 +63,7 @@ const callClientPromise = async() =>{
 const userPromise = (username) =>{
   return new Promise((resolve, reject) => {
     callClientPromise().then(client => {
-      const query = {login: {$regex: new RegExp(`^${username}$`, "i")}};
+      const query = {login: {$regex: new RegExp(`^${username}$`, "i")}}; //case insensitive
       const db = client.db(dbName);
       const entryPromise = () => {
         return new Promise((resolve, reject)=>{
