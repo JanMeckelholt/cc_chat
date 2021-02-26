@@ -1,11 +1,11 @@
-## Extension of the socket.io-Chat-Example.
+# Extension of the socket.io-Chat-Example.
 
-# Additional features:
+## Additional features:
 Check that username is unique
 On Login the username is stored in a Mongo-Database.
 On Logout the username is removed form the DB.
 
-# Implemented as Docker-Container-Network:
+## Implemented as Docker-Container-Network:
 chat-Service:
 Provides the socket.io-functionality extend with the uniquness-check of username
 logindb:
@@ -15,10 +15,10 @@ Can be used to initially fill the DB with names. This names will be blocked for 
 monog-express:
 Can be used to get web-access to the running mongo-DB.
 
-# Prerequiments:
+## Prerequiments:
 Docker and Docker-Compose
 
-# Installation and Start:
+## Installation and Start:
 In the App's root-folder run:
 ```
 $ docker-compose build
