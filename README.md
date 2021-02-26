@@ -1,6 +1,6 @@
 ## Extension of the socket.io-Chat-Example.
 
-#Additional features:
+# Additional features:
 Check that username is unique
 On Login the username is stored in a Mongo-Database.
 On Logout the username is removed form the DB.
